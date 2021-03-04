@@ -1,4 +1,4 @@
-# to-do-tasks
+# To-Do Tasks
 
 Projeto simples de uma to-do list
 
