@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do List</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script src="../js/task.js" defer></script>
+    <script src="../js/todo.js" defer></script>
+</head>
+<body>
+    <div class="grid-container">
+            <div class="cabecalho">
+                <h1>To-Do List</h1>
+                <input type="text"  class="inputTask" id="newTask">
+                <button id="insert" class="insert" onclick="inputTask()">Incluir</button>    
+            </div>
+            <div class="divTable">
+                <table id="list" class="tableTask">
+                    <thead>
+                        <tr class="headTable">
+                            <td class="id"></td>
+                            <td class="task"></td>
+                            <td class="delete"></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="id"><input type="checkbox">
+                        </td>
+                        <td class="task">Ajustar o .js para inserir "tr", estilizar o checkbox</td>
+                        <td class="delete"><button onclick=removeTask(this) class="deleteButton" data-btn-id="${task.id}"> X </button></td>
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+    </div>
+
+</body>
+</html>
