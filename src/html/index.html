@@ -8,13 +8,14 @@
     <link rel="stylesheet" type="text/css" href="../css/style.css">
     <script src="../js/task.js" defer></script>
     <script src="../js/todo.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <div class="grid-container">
             <header class="cabecalho">
                 <h1>To-Do List</h1>
-                <input type="text"  class="inputTask" id="newTask">
-                <button id="insert" class="insert" onclick="inputTask()">Incluir</button>    
+                <input type="text"  class="inputTask" id="newTask" value>
+                <button id="insert" class="insert" onclick="includeTask()">Incluir</button>    
             </header>
             <main class="divTable">
                 <table id="list" class="tableTask">
@@ -25,17 +26,9 @@
                             <td class="delete"></td>
                         </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td class="id"><input type="checkbox">
-                        </td>
-                        <td class="task">Ajustar o .js para inserir "tr", estilizar o caixa de seleção</td>
-                        <td class="delete"><button onclick=removeTask(this) class="deleteButton" data-btn-id="${task.id}"> X </button></td>
-                    </tr>
-                </tbody>
+                    <tbody></tbody>
                 </table>
             </main>
     </div>
-
 </body>
 </html>
