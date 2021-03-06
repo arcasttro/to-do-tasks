@@ -1,4 +1,4 @@
-data_tasks = [];
+data_tasks = [{id:"unico", name:"<< Estilizar o meninão ai 🐀"}];
 
 idGenerator = () => {
    let timestamp = new Date();
@@ -7,26 +7,56 @@ idGenerator = () => {
 
 };
 
-createTask = (element) => {
-   let task = {
-      id: idGenerator(),
-      value: element.value,
-   };
+capitalize = (string) =>  {
+   return string.charAt(0).toUpperCase() + string.slice(1);
+};
 
-   data_tasks.push(task);
+saveTask = (element) => {
+   const found = data_tasks.find(register => register.name === element.value);
+   if (!found){
+         let task = {
+         id: idGenerator(),
+         name: element.value.toLowerCase(),
+      };
+      data_tasks.push(task);
+   }
+   else {return false;}
 
 };
 
-render = () => {
+sendTaskToTable = () => {
+   const value = $('#newTask')[0].value;
+   var row = $('#list tbody')[0].insertRow(-1);
+   let cbxCell = row.insertCell(0);
+   cbxCell.innerHTML = `<input type="checkbox">`;
+   cbxCell.className = 'checkbox';
+   let taskCell = row.insertCell(1);
+   taskCell.innerHTML = capitalize(value);
+   taskCell.className = 'task';
+   let delbtnCell = row.insertCell(2);
+   delbtnCell.innerHTML = `<button onclick=removeTask(this.parentElement) class="deleteButton"> X </button>`;
+   delbtnCell.className = 'delete';
 
-   let htmlRender = data_tasks.reduce((formatterList, task) => {
-      formatterList += `<li data-id="${task.id}" class="itemTask">${task.value}<button onclick=removeTask(this) class="deleteButton" data-btn-id="${task.id}"> X </button></li>`;
-      return formatterList
-   },"");
-
-   document.getElementById("list").innerHTML = htmlRender
 }
 
-deleteTask = (taskId) => {
-   data_tasks = data_tasks.filter(element => element.id !== taskId );
+render = () => {
+   data_tasks.forEach(task => {
+      var row = $('#list tbody')[0].insertRow(-1);
+      let cbxCell = row.insertCell(0);
+      cbxCell.innerHTML = `<input type="checkbox">`;
+      cbxCell.className = 'checkbox';
+      let taskCell = row.insertCell(1);
+      taskCell.innerHTML = capitalize(task.name);
+      taskCell.className = 'task';
+      let delbtnCell = row.insertCell(2);
+      delbtnCell.innerHTML = `<button onclick=removeTask(this.parentElement) class="deleteButton"> X </button>`;
+      delbtnCell.className = 'delete';
+   });
+}
+
+deleteTask = (value) => {
+   const response = data_tasks.findIndex((object) => {
+      object.name == value
+   });
+   data_tasks.splice(response, 1);
 }
