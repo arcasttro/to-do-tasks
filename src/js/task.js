@@ -1,4 +1,4 @@
-data_tasks = [{id:"unico", name:"<< Estilizar o meninão ai 🐀"}];
+data_tasks = [{id:"cbx", name:"<< Estilizar o meninão ai 🐀"}, {id:"tooltip", name:"TODO linha 12 ./todo.js"}];
 
 idGenerator = () => {
    let timestamp = new Date();

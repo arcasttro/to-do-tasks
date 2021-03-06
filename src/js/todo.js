@@ -1,27 +1,22 @@
+   render();
    document.getElementById("newTask").addEventListener("keypress", (event) => {
-         if (document.getElementById("newTask").value.trim() && event.key == "Enter") inputTask();
+         if (document.getElementById("newTask").value.trim() && event.key == "Enter") includeTask();
    });
 
-inputTask = () => {
+includeTask = () => {
    const task_el = document.getElementById("newTask");
-   if (task_el.value.trim()) createTask(task_el);
-   render();
+   if (!task_el.value.trim()) return; // confere se o campo está vazio.
+   let creation = saveTask(task_el); 
+   if (creation == false) { // tratativa para o caso de tarefa duplicada.
+      alert('Tarefa já adicionada à lista.')
+      return /* TODO: criar dps um tooltip alert informando que já existe a tarefa adicionada */
+   }
+   sendTaskToTable();
    task_el.value = null;
-
-};
-
-updateScreen = () => {
-   lists = data_tasks.reduce((allTasks, task) => {
-      allTasks += `<li id-data="${task.id}">${task.data.description} <button onclick=removeTask(this) class="deleteButton" data-id="btn-${task.id}"> X </button></li>`;
-
-      return allTasks;
-   }, "");
-
-   var list = `<ul>${lists}</ul>`;
-   document.getElementById("list").innerHTML = list;
 };
 
 removeTask = (taskToDelete) => {
-   deleteTask(taskToDelete.getAttribute("data-btn-id"));
-   render();
+   let taskValue = taskToDelete.parentElement.childNodes[1].innerHTML.toLowerCase();
+   taskToDelete.parentElement.remove();
+   deleteTask(taskValue);
 }
