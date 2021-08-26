@@ -16,7 +16,7 @@ body {
     ". . .";
 }
 .cabecalho {
-  background: rgba(0, 0, 255, 0.2);
+  /* background: rgba(0, 0, 255, 0.2); */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -71,7 +71,7 @@ button {
 }
 
 .divTable {
-  background: rgba(60, 255, 1, 0.253);
+  /* background: rgba(60, 255, 1, 0.253); */
   display: flex;
   flex-direction: column;
   align-items: center;
